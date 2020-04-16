@@ -19,10 +19,10 @@ func TestHello(t *testing.T) {
 	}
 
 	reqData := CreateVARequest{
-		ExternalID: fmt.Sprintf("%v", time.Now().UnixNano()),
-		BankCode:   VAPermata,
-		Name:       "Jihar Al G",
-		IsSinglUse: true,
+		ExternalID:  fmt.Sprintf("%v", time.Now().UnixNano()),
+		BankCode:    VABRI,
+		Name:        "Jihar Al G",
+		IsSingleUse: true,
 	}
 
 	resp, err := core.CreataVA(reqData)

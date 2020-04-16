@@ -3,7 +3,7 @@ package xenditfasthttp
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -84,7 +84,7 @@ func (c *Client) ExecuteRequest(req *fasthttp.Request, v interface{}) error {
 	if err = json.Unmarshal(resp.Body(), &respErr); err != nil {
 		return err
 	}
-	return errors.New(respErr.Message)
+	return fmt.Errorf("%s-%s", respErr.ErrorCode, respErr.Message)
 }
 
 // Call is ...

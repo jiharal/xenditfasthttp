@@ -14,6 +14,9 @@ const (
 	VAPermata = "PERMATA"
 	// VABCA is ..
 	VABCA = "BCA"
+
+	// VABRI is ...
+	VABRI = "BRI"
 )
 
 // BasicAuth is ..

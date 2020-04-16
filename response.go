@@ -20,5 +20,6 @@ type (
 		IsSinglUse     bool   `json:"is_single_use"`
 		ExpirationDate string `json:"expiration_date"`
 		ID             string `json:"id"`
+		Description    string `json:"description"`
 	}
 )
