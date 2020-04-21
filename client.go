@@ -16,9 +16,7 @@ import (
 // Client is ...
 type Client struct {
 	Host      string
-	PublicKey string
 	SecretKey string
-	Token     string
 	LogLevel  int
 	Logger    *log.Logger
 }
