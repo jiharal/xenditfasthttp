@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net/http"
 	"os"
 	"time"
 
@@ -16,16 +15,13 @@ import (
 // Client is ...
 type Client struct {
 	Host      string
-	PublicKey string
 	SecretKey string
-	Token     string
 	LogLevel  int
 	Logger    *log.Logger
 }
 
 var (
 	defHTTPTimeout = 15 * time.Second
-	httpClient     = &http.Client{Timeout: defHTTPTimeout}
 )
 
 // NewClient is ...
