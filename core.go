@@ -12,8 +12,7 @@ type CoreXendit struct {
 }
 
 const (
-	pathCreateVA        = "/callback_virtual_accounts"
-	patFixedPaymentCode = "/fixed_payment_code"
+	pathCreateVA = "/callback_virtual_accounts"
 )
 
 // Call is ...

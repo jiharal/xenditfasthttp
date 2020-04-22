@@ -3,7 +3,8 @@ package xenditfasthttp
 import (
 	"bytes"
 	"encoding/json"
-	"net/http"
+
+	"github.com/valyala/fasthttp"
 )
 
 // CreataVA is ...
@@ -17,7 +18,7 @@ func (gw *CoreXendit) CreataVA(req CreateVARequest) (res CreateVAResponse, err e
 		"Authorization": BasicAuth(gw.Client.SecretKey, ""),
 		"Content-Type":  "application/json",
 	}
-	err = gw.Call(http.MethodPost, pathCreateVA, headers, buf, &res)
+	err = gw.Call(fasthttp.MethodPost, pathCreateVA, headers, buf, &res)
 	if err != nil {
 		return
 	}

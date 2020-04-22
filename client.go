@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net/http"
 	"os"
 	"time"
 
@@ -23,7 +22,6 @@ type Client struct {
 
 var (
 	defHTTPTimeout = 15 * time.Second
-	httpClient     = &http.Client{Timeout: defHTTPTimeout}
 )
 
 // NewClient is ...
