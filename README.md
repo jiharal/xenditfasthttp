@@ -4,7 +4,7 @@ Golang fasthttp xendit
 # Reference
  - [Xendit Doc](https://xendit.github.io/apireference/)
 
-# Featere
+# Feature
   - Virtual Accounts
     - CreataVA
   - Outlet

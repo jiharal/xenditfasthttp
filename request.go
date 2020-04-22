@@ -1,6 +1,15 @@
 package xenditfasthttp
 
 type (
+	// UpdateVirtualAccountsRequest is used to update virtual account
+	UpdateVirtualAccountsRequest struct {
+		SuggestedAmount int    `json:"suggested_amount,omitempty"`
+		ExpectedAmount  int    `json:"expected_amount,omitempty"`
+		ExpirationDate  string `json:"expiration_date,omitempty"`
+		IsSingleUse     bool   `json:"is_single_use,omitempty"`
+		Description     string `json:"description,omitempty"`
+	}
+
 	// UpdateFixedPaymentCodeRequest is used to update ...
 	UpdateFixedPaymentCodeRequest struct {
 		Name           string `json:"name,omitempty"`

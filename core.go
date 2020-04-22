@@ -11,10 +11,6 @@ type CoreXendit struct {
 	Client Client
 }
 
-const (
-	pathCreateVA = "/callback_virtual_accounts"
-)
-
 // Call is ...
 func (gw *CoreXendit) Call(method, path string, header map[string]string, body io.Reader, v interface{}) error {
 	if !strings.HasPrefix(path, "/") {

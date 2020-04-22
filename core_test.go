@@ -33,9 +33,9 @@ func TestHello(t *testing.T) {
 	require.NoError(t, err)
 	t.Log(createDisembursement)
 
-	// availDisBanks, err := core.GetAvailableDisbursementBanks()
-	// require.NoError(t, err)
-	// t.Log(availDisBanks)
+	availDisBanks, err := core.GetAvailableDisbursementBanks()
+	require.NoError(t, err)
+	t.Log(availDisBanks)
 
 	a, err := core.GetDisbursementsByExternalID("JIHAR1")
 	require.NoError(t, err)

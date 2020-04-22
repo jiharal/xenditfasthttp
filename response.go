@@ -2,6 +2,12 @@ package xenditfasthttp
 
 type (
 
+	// VirtualAccountBanksResponse is used to create response ..
+	VirtualAccountBanksResponse struct {
+		Name string `json:"name"`
+		Code string `json:"code"`
+	}
+
 	// AvailableDisbursementBanksResponse is ...
 	AvailableDisbursementBanksResponse struct {
 		Name            string `json:"name"`
