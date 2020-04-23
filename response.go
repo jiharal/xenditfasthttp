@@ -59,7 +59,7 @@ type (
 		IsClosed        bool   `json:"is_closed"`
 		IsSingleUse     bool   `json:"is_single_use"`
 		Status          string `json:"status"`
-		SuggestedAmount string `json:"suggested_amount,omitempty"`
+		SuggestedAmount int    `json:"suggested_amount,omitempty"`
 		ExpectedAmount  int    `json:"expected_amount,omitempty"`
 		Description     string `json:"description,omitempty"`
 	}
