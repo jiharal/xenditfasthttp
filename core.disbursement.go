@@ -62,8 +62,9 @@ func (gw *CoreXendit) CreateDisbursement(req DisbursementRequest) (res Disbursem
 	}
 	buf := bytes.NewBuffer(data)
 	headers := map[string]string{
-		"Authorization": BasicAuth(gw.Client.SecretKey, ""),
-		"Content-Type":  "application/json",
+		"Authorization":     BasicAuth(gw.Client.SecretKey, ""),
+		"Content-Type":      "application/json",
+		"X-IDEMPOTENCY-KEY": req.IdempotencyKey,
 	}
 	err = gw.Call(fasthttp.MethodPost, pathDisbursements, headers, buf, &res)
 	if err != nil {

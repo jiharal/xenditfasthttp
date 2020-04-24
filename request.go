@@ -19,6 +19,7 @@ type (
 
 	// DisbursementRequest is a Disbursement
 	DisbursementRequest struct {
+		IdempotencyKey    string   `json:"idempotency_key"`
 		ExternalID        string   `json:"external_id"`
 		BankCode          string   `json:"bank_code"`
 		AccountHolderName string   `json:"account_holder_name"`

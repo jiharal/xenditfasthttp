@@ -1,24 +1,20 @@
 package xenditfasthttp
 
 import (
-	"fmt"
 	"testing"
-	"time"
-
-	"github.com/stretchr/testify/require"
 )
 
 func TestHello(t *testing.T) {
-	client := NewClient()
-	client.Host = "https://api.xendit.co"
-	client.SecretKey = "xnd_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw=="
+	// client := NewClient()
+	// client.Host = "https://api.xendit.co"
+	// client.SecretKey = "xnd_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw=="
 
-	core := CoreXendit{
-		Client: client,
-	}
+	// core := CoreXendit{
+	// 	Client: client,
+	// }
 
-	auth := BasicAuth(client.SecretKey, "")
-	t.Log(auth)
+	// auth := BasicAuth(client.SecretKey, "")
+	// t.Log(auth)
 
 	// reqDis := DisbursementRequest{
 	// 	ExternalID:        "JIHAR1122",
@@ -41,18 +37,18 @@ func TestHello(t *testing.T) {
 	// require.NoError(t, err)
 	// t.Log(a)
 
-	reqData := CreateVARequest{
-		ExternalID:      fmt.Sprintf("%v", time.Now().UnixNano()),
-		BankCode:        VABRI,
-		Name:            "Jihar",
-		IsSingleUse:     true,
-		SuggestedAmount: 100000,
-		ExpirationDate:  time.Now().Add(24 * time.Hour).Format(time.RFC3339),
-	}
+	// reqData := CreateVARequest{
+	// 	ExternalID:      fmt.Sprintf("%v", time.Now().UnixNano()),
+	// 	BankCode:        VABRI,
+	// 	Name:            "Jihar",
+	// 	IsSingleUse:     true,
+	// 	SuggestedAmount: 100000,
+	// 	ExpirationDate:  time.Now().Add(24 * time.Hour).Format(time.RFC3339),
+	// }
 
-	resp, err := core.CreataVA(reqData)
-	require.NoError(t, err)
-	t.Log(resp)
+	// resp, err := core.CreataVA(reqData)
+	// require.NoError(t, err)
+	// t.Log(resp)
 
 	// reqOutlet := CreateFixedPaymentCodeRequest{
 	// 	ExternalID:       fmt.Sprintf("KS%v", time.Now().UnixNano()),

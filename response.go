@@ -25,6 +25,7 @@ type (
 		AccountHolderName       string   `json:"account_holder_name"`
 		DisbursementDescription string   `json:"disbursement_description"`
 		Status                  string   `json:"status"`
+		IdempotencyKey          string   `json:"idempotency_key,omitempty"`
 		EmailTo                 []string `json:"email_to,omitempty"`
 		EmailCC                 []string `json:"email_cc,omitempty"`
 		EmailBCC                []string `json:"email_bcc,omitempty"`
