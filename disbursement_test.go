@@ -16,6 +16,28 @@ func TestCreateDisbursement(t *testing.T) {
 	core := CoreXendit{
 		Client: client,
 	}
+
+	getAvailBatch, err := core.GetAvailableBatchDisbursementBanks()
+	require.NoError(t, err)
+	t.Log(getAvailBatch)
+
+	batchDidbReq := BatchDisbursementRequest{
+		Reference: fmt.Sprintf("withdraw_%v", time.Now().Unix()),
+		Disbursements: []BatchDisbursement{
+			{
+				ExternalID:        fmt.Sprintf("kesan_%v", time.Now().Unix()),
+				BankCode:          "BCA",
+				Amount:            90000,
+				BankAccountName:   "Joe",
+				BankAccountNumber: "1234567890",
+				Description:       "Batch disbursement",
+				EmailTo:           []string{"jihar@tlab.co.id"},
+			},
+		},
+	}
+	resp, err := core.CreateBatchDisbursement(batchDidbReq)
+	require.NoError(t, err)
+	t.Log(resp)
 	reqData := DisbursementRequest{
 		IdempotencyKey:    fmt.Sprintf("key_%v", time.Now().Unix()),
 		ExternalID:        fmt.Sprintf("kesan_%v", time.Now().Unix()),
@@ -25,6 +47,7 @@ func TestCreateDisbursement(t *testing.T) {
 		AccountNumber:     "1234567890",
 		Description:       "Disbursement from postman",
 	}
+
 	res, err := core.CreateDisbursement(reqData)
 	require.NoError(t, err)
 	t.Log(res)

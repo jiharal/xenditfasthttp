@@ -1,6 +1,21 @@
 package xenditfasthttp
 
 type (
+	// GetAvailableDisbursementBanksResponse is used to ...
+	GetAvailableDisbursementBanksResponse struct {
+		Name string `json:"name"`
+		Code string `json:"code"`
+	}
+
+	// CreateBatchDisbursementResponse is used to ...
+	CreateBatchDisbursementResponse struct {
+		ID                  string `json:"id"`
+		Created             string `json:"created"`
+		Reference           string `json:"reference"`
+		TotalUploadedAmount int    `json:"total_uploaded_amount"`
+		TotalUploadedCount  int    `json:"total_uploaded_count"`
+		Status              string `json:"status"`
+	}
 
 	// VirtualAccountBanksResponse is used to create response ..
 	VirtualAccountBanksResponse struct {
