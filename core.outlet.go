@@ -9,8 +9,9 @@ import (
 )
 
 const (
-	patFixedPaymentCode        = "/fixed_payment_code"
-	pathUpdateFixedPaymentCode = "/fixed_payment_code/%s"
+	pathFixedPaymentCode         = "/fixed_payment_code"
+	pathSimulateFixedPaymentCode = "/fixed_payment_code/simulate_payment"
+	pathUpdateFixedPaymentCode   = "/fixed_payment_code/%s"
 )
 
 // UpdateFixedPaymentCode i sused to update payment
@@ -42,7 +43,25 @@ func (gw *CoreXendit) CreateFixedPaymentCode(req CreateFixedPaymentCodeRequest) 
 		"Authorization": BasicAuth(gw.Client.SecretKey, ""),
 		"Content-Type":  "application/json",
 	}
-	err = gw.Call(fasthttp.MethodPost, patFixedPaymentCode, headers, buf, &res)
+	err = gw.Call(fasthttp.MethodPost, pathFixedPaymentCode, headers, buf, &res)
+	if err != nil {
+		return
+	}
+	return
+}
+
+// SimulateFixedPayment is used to simulate payment to outlet.
+func (gw *CoreXendit) SimulateFixedPayment(req SimulateRequest) (res SimulateResponse, err error) {
+	data, err := json.Marshal(req)
+	if err != nil {
+		return
+	}
+	buf := bytes.NewBuffer(data)
+	headers := map[string]string{
+		"Authorization": BasicAuth(gw.Client.SecretKey, ""),
+		"Content-Type":  "application/json",
+	}
+	err = gw.Call(fasthttp.MethodPost, pathSimulateFixedPaymentCode, headers, buf, &res)
 	if err != nil {
 		return
 	}

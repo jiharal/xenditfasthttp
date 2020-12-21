@@ -1,63 +1,63 @@
 package xenditfasthttp
 
 import (
+	"fmt"
 	"testing"
+	"time"
 )
 
-func TestHello(t *testing.T) {
-	// client := NewClient()
-	// client.Host = "https://api.xendit.co"
-	// client.SecretKey = "xnd_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw=="
+func initial() *CoreXendit {
+	client := NewClient()
+	client.Host = "https://api.xendit.co"
+	client.SecretKey = ""
 
-	// core := CoreXendit{
-	// 	Client: client,
-	// }
+	return &CoreXendit{
+		Client: client,
+	}
+}
+func TestOutlet(t *testing.T) {
+	init := initial()
+	req := CreateFixedPaymentCodeRequest{
+		ExternalID:       fmt.Sprintf("%v", time.Now().Unix()),
+		RetailOutletName: OutletIndomaret,
+		Name:             "Joe Doe",
+		ExpectedAmount:   10000,
+		ExpirationDate:   time.Now().Add(24 * time.Hour).Format(time.RFC3339),
+		IsSingleUse:      true,
+	}
+	reqData, err := init.CreateFixedPaymentCode(req)
+	if err != nil {
+		t.Fatal(err)
+	}
 
-	// auth := BasicAuth(client.SecretKey, "")
-	// t.Log(auth)
+	reqSimulate := SimulateRequest{
+		ExternalID:       reqData.ExternalID,
+		RetailOutletName: reqData.RetailOutletName,
+		PaymentCode:      reqData.PaymentCode,
+		TransferAmount:   reqData.ExpectedAmount,
+	}
 
-	// reqDis := DisbursementRequest{
-	// 	ExternalID:        "JIHAR1122",
-	// 	BankCode:          "BCA",
-	// 	AccountHolderName: "Jihar Al Gifari",
-	// 	AccountNumber:     "1234567890",
-	// 	Description:       "Hello",
-	// 	Amount:            120000,
-	// }
+	simResp, err := init.SimulateFixedPayment(reqSimulate)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(simResp)
+}
 
-	// createDisembursement, err := core.CreateDisbursement(reqDis)
-	// require.NoError(t, err)
-	// t.Log(createDisembursement)
+func TestVA(t *testing.T) {
+	init := initial()
 
-	// availDisBanks, err := core.GetAvailableDisbursementBanks()
-	// require.NoError(t, err)
-	// t.Log(availDisBanks)
-
-	// a, err := core.GetDisbursementsByExternalID("JIHAR1")
-	// require.NoError(t, err)
-	// t.Log(a)
-
-	// reqData := CreateVARequest{
-	// 	ExternalID:      fmt.Sprintf("%v", time.Now().UnixNano()),
-	// 	BankCode:        VABRI,
-	// 	Name:            "Jihar",
-	// 	IsSingleUse:     true,
-	// 	SuggestedAmount: 100000,
-	// 	ExpirationDate:  time.Now().Add(24 * time.Hour).Format(time.RFC3339),
-	// }
-
-	// resp, err := core.CreataVA(reqData)
-	// require.NoError(t, err)
-	// t.Log(resp)
-
-	// reqOutlet := CreateFixedPaymentCodeRequest{
-	// 	ExternalID:       fmt.Sprintf("KS%v", time.Now().UnixNano()),
-	// 	RetailOutletName: "INDOMARET",
-	// 	Name:             "Jihar",
-	// 	ExpectedAmount:   100000,
-	// 	IsSingleUse:      true,
-	// }
-	// outletResp, err := core.CreateFixedPaymentCode(reqOutlet)
-	// require.NoError(t, err)
-	// t.Log(outletResp)
+	reqData := CreateVARequest{
+		ExternalID:      fmt.Sprintf("%v", time.Now().UnixNano()),
+		BankCode:        VABRI,
+		Name:            "Jihar",
+		IsSingleUse:     true,
+		SuggestedAmount: 100000,
+		ExpirationDate:  time.Now().Add(24 * time.Hour).Format(time.RFC3339),
+	}
+	resp, err := init.CreataVA(reqData)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(resp)
 }
