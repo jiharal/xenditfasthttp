@@ -84,4 +84,10 @@ type (
 		ErrorCode string `json:"error_code"`
 		Message   string `json:"message"`
 	}
+
+	// SimulateResponse struct ..
+	SimulateResponse struct {
+		Status  string `json:"status"`
+		Message string `json:"message"`
+	}
 )

@@ -60,6 +60,15 @@ type (
 		ExpirationDate   string `json:"expiration_date,omitempty"`
 		IsSingleUse      bool   `json:"is_single_use,omitempty"`
 	}
+
+	// SimulateRequest ...
+	SimulateRequest struct {
+		ExternalID       string `json:"external_id"`
+		RetailOutletName string `json:"retail_outlet_name"`
+		PaymentCode      string `json:"payment_code"`
+		TransferAmount   int    `json:"transfer_amount"`
+	}
+
 	// CreateVARequest is ...
 	CreateVARequest struct {
 		ExternalID           string `json:"external_id,required"`

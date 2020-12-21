@@ -17,6 +17,15 @@ const (
 
 	// VABRI is ...
 	VABRI = "BRI"
+
+	// VABNISyariah is ....
+	VABNISyariah = "BNI_SYARIAH"
+
+	// OutletIndomaret ...
+	OutletIndomaret = "INDOMARET"
+
+	// OutletAlfamart ...
+	OutletAlfamart = "ALFAMART"
 )
 
 // BasicAuth is ..
